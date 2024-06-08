@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Children Information</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-title h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .form-title p {
+            margin: 5px 0 0;
+            color: #666;
+        }
+        .form-section {
+            margin-bottom: 30px;
+        }
+        .form-section h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+        .form-group {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: calc(50% - 10px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .form-group input:last-child, .form-group select:last-child {
+            margin-right: 0;
+        }
+        .form-group input[type="submit"], .form-group input[type="button"], .form-group input[type="reset"] {
+            width: auto;
+            margin-right: 10px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+        }
+        .form-group input[type="button"], .form-group input[type="reset"] {
+            background-color: #6c757d;
+        }
+        .form-group input[type="submit"]:hover, .form-group input[type="button"]:hover, .form-group input[type="reset"]:hover {
+            opacity: 0.9;
+        }
+        .hidden {
+            display: none;
+        }
+        .remove-child {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+        .remove-child:hover {
+            opacity: 0.9;
+        }
+        .add-child-button {
+            background-color: #ffc107;
+            color: black;
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+        .add-child-button:hover {
+            opacity: 0.9;
+        }
+        .child-info {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="childrenContainer">
+        <div class="form-title">
+            <h1>Children Information</h1>
+        </div>
+        <div class="form-section">
+            <h2>Children</h2>
+            <p>No entries yet.</p>
+            <button type="button" class="add-child-button" id="add-child">+ Add Child</button>
+            <div id="children-container" class="child-info"></div>
+        </div>
+        <form id="childrenForm">
+            <div class="form-group">
+                <input type="submit" value="Submit Children Information">
+                <input type="button" value="Cancel" id="cancel-children-info">
+                <input type="reset" value="Clear">
+            </div>
+        </form>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#childrenForm').submit(function(event) {
+                event.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '/submit-children',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        alert('Children form submitted successfully!');
+                    },
+                    error: function(error) {
+                        alert('Error submitting children form');
+                    }
+                });
+            });
+
+            $('#cancel-children-info').click(function() {
+                $('#dynamic-content').addClass('hidden');
+                $('#taxContainer').show();
+            });
+
+            $('#add-child').click(function() {
+                $.get('/child', function(data) {
+                    $('#children-container').append(data);
+                });
+            });
+
+            $(document).on('click', '.remove-child', function() {
+                $(this).closest('.child-form').remove();
+            });
+        });
+    </script>
+</body>
+</html>

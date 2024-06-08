@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-title h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .form-title p {
+            margin: 5px 0 0;
+            color: #666;
+        }
+        .form-section {
+            margin-bottom: 30px;
+        }
+        .form-section h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+        .form-group {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: calc(50% - 10px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .form-group input:last-child, .form-group select:last-child {
+            margin-right: 0;
+        }
+        .form-group input[type="submit"], .form-group input[type="button"], .form-group input[type="reset"] {
+            width: auto;
+            margin-right: 10px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+        }
+        .form-group input[type="button"], .form-group input[type="reset"] {
+            background-color: #6c757d;
+        }
+        .form-group input[type="submit"]:hover, .form-group input[type="button"]:hover, .form-group input[type="reset"]:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-title">
+            <h1>Form Page</h1>
+            <p>Fill out the details below to complete the form.</p>
+        </div>
+        <form action="/submit" method="post"> <!-- Update the action to point to /submit -->
+            <div class="form-section">
+                <h2>Personal Information</h2>
+                <div class="form-group">
+                    <label for="marital-status">Marital Status *</label>
+                    <select id="marital-status" name="marital-status">
+                        <option value="">Please select...</option>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                        <option value="divorced">Divorced</option>
+                        <option value="widowed">Widowed</option>
+                    </select>
+                    <label for="title">Title, Academic Degree</label>
+                    <input type="text" id="title" name="title">
+                </div>
+                <div class="form-group">
+                    <label for="first-name">First Name *</label>
+                    <input type="text" id="first-name" name="first-name" required>
+                    <label for="last-name">Last Name *</label>
+                    <input type="text" id="last-name" name="last-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender *</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Please select...</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="diverse">Diverse</option>
+                    </select>
+                    <label for="birthdate">Birthdate *</label>
+                    <input type="date" id="birthdate" name="birthdate" required>
+                </div>
+                <div class="form-group">
+                    <label for="date-of-death">Date of Death (if deceased)</label>
+                    <input type="date" id="date-of-death" name="date-of-death">
+                    <label for="tax-id">Tax Identification Number</label>
+                    <input type="text" id="tax-id" name="tax-id">
+                </div>
+                <div class="form-group">
+                    <label for="occupation">Occupation in 2024</label>
+                    <input type="text" id="occupation" name="occupation">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Current Address</h2>
+                <div class="form-group">
+                    <label>Is the current residence in Germany?</label>
+                    <input type="radio" id="residence-germany-yes" name="residence-germany" value="yes">
+                    <label for="residence-germany-yes">Yes</label>
+                    <input type="radio" id="residence-germany-no" name="residence-germany" value="no">
+                    <label for="residence-germany-no">No</label>
+                </div>
+                <div class="form-group">
+                    <label for="street">Street *</label>
+                    <input type="text" id="street" name="street" required>
+                    <label for="house-number">House Number *</label>
+                    <input type="text" id="house-number" name="house-number" required>
+                </div>
+                <div class="form-group">
+                    <label for="address-addition">Address Addition</label>
+                    <input type="text" id="address-addition" name="address-addition">
+                    <label for="postal-code">Postal Code *</label>
+                    <input type="text" id="postal-code" name="postal-code" required>
+                </div>
+                <div class="form-group">
+                    <label for="city">City *</label>
+                    <input type="text" id="city" name="city" required>
+                    <label for="phone-number">Phone Number *</label>
+                    <input type="text" id="phone-number" name="phone-number" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Residency and Taxes in 2024</h2>
+                <div class="form-group">
+                    <label>Did the taxpayer have a residence abroad in 2024?</label>
+                    <input type="radio" id="residence-abroad-yes" name="residence-abroad" value="yes">
+                    <label for="residence-abroad-yes">Yes</label>
+                    <input type="radio" id="residence-abroad-no" name="residence-abroad" value="no">
+                    <label for="residence-abroad-no">No</label>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Religion / Church Tax Obligation</h2>
+                <div class="form-group">
+                    <label for="religion">Religion of the taxpayer in 2024 *</label>
+                    <select id="religion" name="religion">
+                        <option value="">Please select...</option>
+                        <option value="none">None</option>
+                        <option value="protestant">Protestant</option>
+                        <option value="catholic">Catholic</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Disabilities and Survivor Benefits</h2>
+                <div class="form-group">
+                    <label>Was the taxpayer found to have a degree of disability or at least care level 4?</label>
+                    <input type="radio" id="disability-yes" name="disability" value="yes">
+                    <label for="disability-yes">Yes</label>
+                    <input type="radio" id="disability-no" name="disability" value="no">
+                    <label for="disability-no">No</label>
+                </div>
+                <div class="form-group">
+                    <label>Did the taxpayer receive survivor benefits in 2024?</label>
+                    <input type="radio" id="survivor-benefits-yes" name="survivor-benefits" value="yes">
+                    <label for="survivor-benefits-yes">Yes</label>
+                    <input type="radio" id="survivor-benefits-no" name="survivor-benefits" value="no">
+                    <label for="survivor-benefits-no">No</label>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>

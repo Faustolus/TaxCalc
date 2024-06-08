@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employment Certificate</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-title h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .form-title p {
+            margin: 5px 0 0;
+            color: #666;
+        }
+        .form-section {
+            margin-bottom: 30px;
+        }
+        .form-section h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+        .form-group {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: calc(50% - 10px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .form-group input:last-child, .form-group select:last-child {
+            margin-right: 0;
+        }
+        .form-group input[type="submit"], .form-group input[type="button"], .form-group input[type="reset"] {
+            width: auto;
+            margin-right: 10px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+        }
+        .form-group input[type="button"], .form-group input[type="reset"] {
+            background-color: #6c757d;
+        }
+        .form-group input[type="submit"]:hover, .form-group input[type="button"]:hover, .form-group input[type="reset"]:hover {
+            opacity: 0.9;
+        }
+        .hidden {
+            display: none;
+        }
+        .remove-child {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+        .remove-child:hover {
+            opacity: 0.9;
+        }
+        .add-child-button {
+            background-color: #ffc107;
+            color: black;
+            border: none;
+            cursor: pointer;
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+        .add-child-button:hover {
+            opacity: 0.9;
+        }
+        .child-info {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-title">
+            <h1>Employment Certificate (01.01 - 31.12)</h1>
+        </div>
+        <form id="employmentForm">
+            <div class="form-section">
+                <h2>Employment Information</h2>
+                <div class="form-group">
+                    <label for="employer">Employer (e.g. Company, Institution, Service) *</label>
+                    <input type="text" id="employer" name="employer" required>
+                </div>
+                <div class="form-group">
+                    <label for="tax-id-number">Tax Identification Number</label>
+                    <input type="text" id="tax-id-number" name="tax-id-number">
+                </div>
+                <div class="form-group">
+                    <label for="tax-class">Tax Class</label>
+                    <select id="tax-class" name="tax-class">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="occupation-group">Occupation Group</label>
+                    <select id="occupation-group" name="occupation-group">
+                        <option value="employee-trainee">Employee, Trainee</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Lines of the Employment Certificate</h2>
+                <div class="form-group">
+                    <label for="certificate-period">Certificate Period *</label>
+                    <input type="text" id="certificate-period" name="certificate-period" value="01.01 - 31.12" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="number-u">Number U</label>
+                    <input type="number" id="number-u" name="number-u">
+                </div>
+                <div class="form-group">
+                    <label for="capital-letters">Capital Letters</label>
+                    <input type="checkbox" id="capital-letters-s" name="capital-letters" value="S"> S
+                    <input type="checkbox" id="capital-letters-m" name="capital-letters" value="M"> M
+                    <input type="checkbox" id="capital-letters-f" name="capital-letters" value="F"> F
+                    <input type="checkbox" id="capital-letters-fr" name="capital-letters" value="FR"> FR
+                </div>
+                <div class="form-group">
+                    <label for="gross-wages">Gross Wages</label>
+                    <input type="text" id="gross-wages" name="gross-wages" value="0.00 €">
+                </div>
+                <div class="form-group">
+                    <label for="uniform-wage-tax">Uniform Wage Tax</label>
+                    <input type="text" id="uniform-wage-tax" name="uniform-wage-tax" value="0.00 €">
+                </div>
+                <div class="form-group">
+                    <label for="solidarity-surcharge">Solidarity Surcharge</label>
+                    <input type="text" id="solidarity-surcharge" name="solidarity-surcharge" value="0.00 €">
+                </div>
+                <div class="form-group">
+                    <label for="church-tax-employer">Church Tax of the Employer</label>
+                    <input type="text" id="church-tax-employer" name="church-tax-employer" value="0.00 €">
+                </div>
+                <div class="form-group">
+                    <label for="church-tax-spouse">Church Tax of the Spouse</label>
+                    <input type="text" id="church-tax-spouse" name="church-tax-spouse" value="0.00 €">
+                </div>
+                <div class="form-group">
+                    <label for="pension-benefits">Included Pension Benefits</label>
+                    <input type="text" id="pension-benefits" name="pension-benefits" value="0.00 €">
+                </div>
+                <div class="form-group">
+                    <label>Show Lines 9 to 14 of the Employment Certificate?</label>
+                    <input type="radio" id="show-lines-yes" name="show-lines" value="yes">
+                    <label for="show-lines-yes">Yes</label>
+                    <input type="radio" id="show-lines-no" name="show-lines" value="no" checked>
+                    <label for="show-lines-no">No</label>
+                </div>
+                <div class="form-group">
+                    <label for="maternity-benefits">Maternity Benefits, Allowances, etc.</label>
+                    <input type="text" id="maternity-benefits" name="maternity-benefits" value="0.00 €">
+                </div>
+                <div class="form-group">
+                    <label>Show Lines 16 to 21 of the Employment Certificate?</label>
+                    <input type="radio" id="show-lines-16-yes" name="show-lines-16" value="yes">
+                    <label for="show-lines-16-yes">Yes</label>
+                    <input type="radio" id="show-lines-16-no" name="show-lines-16" value="no" checked>
+                    <label for="show-lines-16-no">No</label>
+                </div>
+                <div class="form-group">
+                    <label for="employer-contribution">Employer Contribution / Subsidy</label>
+                    <input type="text" id="employer-contribution" name="employer-contribution" value="0.00 €">
+                </div>
+                <div class="form-group">
+                    <label for="statutory-pension-insurance">To statutory pension insurance</label>
+                    <input type="text" id="statutory-pension-insurance" name="statutory-pension-insurance" value="0.00 €">
+                </div>
+                <div class="form-group">
+                    <label for="occupational-pension-schemes">To occupational pension schemes</label>
+                    <input type="text" id="occupational-pension-schemes" name="occupational-pension-schemes" value="0.00 €">
+                </div>
+                <div class="form-group">
+                    <label for="employment-contribution">Employment Contribution</label>
+                    <input type="text" id="employment-contribution" name="employment-contribution" value="0.00 €">
+                </div>
+                <div class="form-group">
+                    <label for="statutory-pension-insurance-employment">To statutory pension insurance</label>
+                    <input type="text" id="statutory-pension-insurance-employment" name="statutory-pension-insurance-employment" value="0.00 €">
+                </div>
+                <div class="form-group">
+                    <label for="occupational-pension-schemes-employment">To occupational pension schemes</label>
+                    <input type="text" id="occupational-pension-schemes-employment" name="occupational-pension-schemes-employment" value="0.00 €">
+                </div>
+                <div class="form-group">
+                    <label for="health-insurance">To statutory health insurance</label>
+                    <input type="text" id="health-insurance" name="health-insurance" value="0.00 €">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Submit Employment Information">
+                <input type="button" value="Cancel" id="cancel-employment-info">
+                <input type="reset" value="Clear">
+            </div>
+        </form>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#employmentForm').submit(function(event) {
+                event.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '/submit-employment',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        alert('Employment form submitted successfully!');
+                    },
+                    error: function(error) {
+                        alert('Error submitting employment form');
+                    }
+                });
+            });
+
+            $('#cancel-employment-info').click(function() {
+                $('#dynamic-content').addClass('hidden');
+                $('#mainContainer').show();
+            });
+        });
+    </script>
+</body>
+</html>
