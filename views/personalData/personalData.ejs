@@ -1,0 +1,233 @@
+<!-- views/index.ejs -->
+<div class="form-title">
+    <h1>Form Page</h1>
+    <p>Fill out the details below to complete the form.</p>
+</div>
+<form id="mainForm">
+    <div class="form-section">
+        <h2>Personal Information</h2>
+        <div class="form-group row">
+            <div class="col-sm-6 mb-4">
+                <label for="marital-status">Marital Status *</label>
+                <select id="marital-status" name="marital-status" class="form-control">
+                    <option value="">Please select...</option>
+                    <option value="single">Single</option>
+                    <option value="married">Married</option>
+                    <option value="divorced">Divorced</option>
+                    <option value="widowed">Widowed</option>
+                </select>
+            </div>
+            <div class="col-sm-6 mb-4">
+                <label for="title">Title, Academic Degree</label>
+                <input type="text" id="title" name="title" class="form-control">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6 mb-4">
+                <label for="first-name">First Name *</label>
+                <input type="text" id="first-name" name="first-name" class="form-control" required>
+            </div>
+            <div class="col-sm-6 mb-4">
+                <label for="last-name">Last Name *</label>
+                <input type="text" id="last-name" name="last-name" class="form-control" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6 mb-4">
+                <label for="gender">Gender *</label>
+                <select id="gender" name="gender" class="form-control" required>
+                    <option value="">Please select...</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="diverse">Diverse</option>
+                </select>
+            </div>
+            <div class="col-sm-6 mb-4">
+                <label for="birthdate">Birthdate *</label>
+                <input type="date" id="birthdate" name="birthdate" class="form-control" required>
+            </div>            
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6 mb-4">
+                <label for="tax-id">Tax Identification Number</label>
+                <input type="text" id="tax-id" name="tax-id" class="form-control">
+            </div>
+            <div class="col-sm-6 mb-4">
+                <label for="date-of-death">Date of Death (if deceased)</label>
+                <input type="date" id="date-of-death" name="date-of-death" class="form-control">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6 mb-4">
+                <label for="occupation">Occupation in 2024</label>
+                <input type="text" id="occupation" name="occupation" class="form-control">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h2>Current Address</h2>
+        <div class="form-group row">
+            <div class="col-sm-12 mb-4">
+                <label>Is the current residence in Germany?</label>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="residence-germany" name="residence-germany" value="yes">
+                    <label class="custom-control-label" for="residence-germany" id="residence-germany-label">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6 mb-4">
+                <label for="phone-number">Phone Number *</label>
+                <input type="text" id="phone-number" name="phone-number" class="form-control" required>
+            </div>
+            <div class="col-sm-6 mb-4">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" class="form-control">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6 mb-4">
+                <label for="city">City *</label>
+                <input type="text" id="city" name="city" class="form-control" required>
+            </div>
+            <div class="col-sm-6 mb-4">
+                <label for="postal-code">Postal Code *</label>
+                <input type="text" id="postal-code" name="postal-code" class="form-control" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6 mb-4">
+                <label for="street">Street *</label>
+                <input type="text" id="street" name="street" class="form-control" required>
+            </div>
+            <div class="col-sm-6 mb-4">
+                <label for="house-number">House Number *</label>
+                <input type="text" id="house-number" name="house-number" class="form-control" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6 mb-4">
+                <label for="address-addition">Address Addition</label>
+                <input type="text" id="address-addition" name="address-addition" class="form-control">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h2>Residency and Taxes in 2024</h2>
+        <div class="form-group row">
+            <div class="col-sm-12 mb-4">
+                <label>Did the taxpayer have a residence abroad in 2024?</label>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="residence-abroad" name="residence-abroad" value="yes">
+                    <label class="custom-control-label" for="residence-abroad" id="residence-abroad-label">No</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h2>Religion / Church Tax Obligation</h2>
+        <div class="form-group row">
+            <div class="col-sm-6 mb-4">
+                <label for="religion">Religion of the taxpayer in 2024 *</label>
+                <select id="religion" name="religion" class="form-control">
+                    <option value="">Please select...</option>
+                    <option value="none">None</option>
+                    <option value="protestant">Protestant</option>
+                    <option value="catholic">Catholic</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <h2>Disabilities and Survivor Benefits</h2>
+        <div class="form-group row">
+            <div class="col-sm-6 mb-4">
+                <label>Was the taxpayer found to have a degree of disability or at least care level 4?</label>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="disability" name="disability" value="yes">
+                    <label class="custom-control-label" for="disability" id="disability-label">No</label>
+                </div>
+            </div>
+            <div class="col-sm-6 mb-4">
+                <label>Did the taxpayer receive survivor benefits in 2024?</label>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="survivor-benefits" name="survivor-benefits" value="yes">
+                    <label class="custom-control-label" for="survivor-benefits" id="survivor-benefits-label">No</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-6 mb-4">
+            <input type="submit" value="Submit" class="btn btn-primary">
+        </div>
+        <div class="col-sm-6 mb-4">
+            <input type="button" value="Proceed to Bank Information" id="proceed-to-bank" class="btn btn-secondary">
+        </div>
+    </div>
+</form>
+<script>
+    $(document).ready(function() {
+        // Toggle the text of the residence-germany switch
+        $('#residence-germany').change(function() {
+            if (this.checked) {
+                $('#residence-germany-label').text('Yes');
+            } else {
+                $('#residence-germany-label').text('No');
+            }
+        });
+
+        // Toggle the text of the residence-abroad switch
+        $('#residence-abroad').change(function() {
+            if (this.checked) {
+                $('#residence-abroad-label').text('Yes');
+            } else {
+                $('#residence-abroad-label').text('No');
+            }
+        });
+
+        // Toggle the text of the disability switch
+        $('#disability').change(function() {
+            if (this.checked) {
+                $('#disability-label').text('Yes');
+            } else {
+                $('#disability-label').text('No');
+            }
+        });
+
+        // Toggle the text of the survivor-benefits switch
+        $('#survivor-benefits').change(function() {
+            if (this.checked) {
+                $('#survivor-benefits-label').text('Yes');
+            } else {
+                $('#survivor-benefits-label').text('No');
+            }
+        });
+
+        $('#mainForm').submit(function(event) {
+            event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '/submit',
+                data: $(this).serialize(),
+                success: function(response) {
+                    alert('Form submitted successfully!');
+                },
+                error: function(error) {
+                    alert('Error submitting form');
+                }
+            });
+        });
+
+        $('#proceed-to-bank').click(function() {
+            $('#mainContainer').hide();
+            $('#dynamic-content').removeClass('hidden').load('/bank');
+        });
+    });
+</script>

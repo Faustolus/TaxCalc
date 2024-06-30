@@ -1,0 +1,96 @@
+<!-- views/personalData/children.ejs -->
+<div class="form-title">
+    <h1>Children Information</h1>
+</div>
+<div class="form-section">
+    <h2>Children</h2>
+    <p id="no-entries-text" class="text-muted">No entries yet.</p>
+    <button type="button" class="btn btn-success mb-3" id="add-child">+ Add Child</button>
+    <div id="children-container"></div>
+</div>
+<form id="childrenForm">
+    <div class="form-group row">
+        <div class="col-sm-6 mb-4">
+            <input type="submit" value="Submit Children Information" class="btn btn-primary">
+        </div>
+        <div class="col-sm-6 mb-4">
+            <input type="button" value="Cancel" id="cancel-children-info" class="btn btn-secondary">
+            <input type="reset" value="Clear" class="btn btn-warning">
+        </div>
+    </div>
+</form>
+
+<script>
+    $(document).ready(function() {
+        $('#childrenForm').submit(function(event) {
+            event.preventDefault();
+            let isValid = true;
+
+            // Validate each child form
+            $('.child-form').each(function() {
+                const firstName = $(this).find('.child-first-name').val().trim();
+                const lastName = $(this).find('.child-last-name').val().trim();
+                const birthdate = $(this).find('.child-birthdate').val().trim();
+                const taxId = $(this).find('.child-tax-id').val().trim();
+                const familyOffice = $(this).find('.child-family-office').val().trim();
+
+                if (!firstName || !lastName || !birthdate || !taxId || !familyOffice) {
+                    isValid = false;
+                    $(this).find('.form-control:invalid').first().focus();
+                    alert('Please fill out all required fields.');
+                    return false; // Break the each loop
+                }
+            });
+
+            if (isValid) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/submit-children',
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        alert('Children form submitted successfully!');
+                    },
+                    error: function(error) {
+                        alert('Error submitting children form');
+                    }
+                });
+            }
+        });
+
+        $('#cancel-children-info').click(function() {
+            $('#dynamic-content').addClass('hidden');
+            $('#mainContainer').show();
+        });
+
+        $('#add-child').click(function() {
+            $.get('/child', function(data) {
+                $('#no-entries-text').hide();
+                // Create a temporary DOM element to filter out unwanted parts
+                var tempDiv = $('<div>').html(data);
+                var childFormHtml = tempDiv.find('.child-form').prop('outerHTML');
+                $('#children-container').append(childFormHtml).show();
+                updateChildrenContainer();
+            });
+        });
+
+        $(document).on('click', '.remove-child', function() {
+            $(this).closest('.child-form').remove();
+            updateChildrenContainer();
+        });
+
+        function updateChildrenContainer() {
+            const childForms = $('#children-container .child-form');
+            console.log('Number of child forms:', childForms.length);
+            if (childForms.length === 0) {
+                $('#no-entries-text').show();
+                $('#children-container').hide();
+            } else {
+                $('#no-entries-text').hide();
+                $('#children-container').show(); 
+            }
+        }
+
+        // Initial call to update the container state
+        updateChildrenContainer();
+    });
+</script>

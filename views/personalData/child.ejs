@@ -1,0 +1,36 @@
+<!-- views/child.ejs -->
+<div class="child-form card mb-3">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Child Information</h5>
+        <button type="button" class="btn btn-danger btn-sm remove-child">Remove</button>
+    </div>
+    <div class="card-body">
+        <p>Please provide the details below.</p>
+        <div class="form-group row">
+            <div class="col-sm-6 mb-4">
+                <label for="child-first-name">First Name *</label>
+                <input type="text" class="child-first-name form-control" name="child-first-name" required>
+            </div>
+            <div class="col-sm-6 mb-4">
+                <label for="child-last-name">Last Name *</label>
+                <input type="text" class="child-last-name form-control" name="child-last-name" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6 mb-4">
+                <label for="child-birthdate">Birthdate *</label>
+                <input type="date" class="child-birthdate form-control" name="child-birthdate" required>
+            </div>
+            <div class="col-sm-6 mb-4">
+                <label for="child-tax-id">Tax Identification Number *</label>
+                <input type="text" class="child-tax-id form-control" name="child-tax-id" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-12 mb-4">
+                <label for="child-family-office">Responsible Family Office *</label>
+                <input type="text" class="child-family-office form-control" name="child-family-office" required>
+            </div>
+        </div>
+    </div>
+</div>

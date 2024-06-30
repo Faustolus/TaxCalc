@@ -1,0 +1,88 @@
+<!-- views/bank.ejs -->
+<div class="form-title">
+    <h1>Bank Information</h1>
+    <p>Please provide your bank details below.</p>
+</div>
+<form id="bankForm">
+    <div class="form-section">
+        <h2>Bank Account - Taxpayer</h2>
+        <div class="form-group row">
+            <div class="col-sm-12 mb-4">
+                <label>Should a bank account be registered for the taxpayer?</label>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="register-bank" name="register-bank" value="yes">
+                    <label class="custom-control-label" for="register-bank" id="register-bank-label">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-12 mb-4">
+                <label>Is the taxpayer the account holder?</label>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="account-holder" name="account-holder" value="yes">
+                    <label class="custom-control-label" for="account-holder" id="account-holder-label">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-12 mb-4">
+                <label for="iban">IBAN *</label>
+                <input type="text" id="iban" name="iban" class="form-control" required>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-6 mb-4">
+            <input type="button" value="Cancel" id="cancel-bank-info" class="btn btn-secondary">
+        </div>
+        <div class="col-sm-6 mb-4">
+            <input type="button" value="Proceed to Tax Information" id="proceed-to-tax" class="btn btn-primary">
+        </div>
+    </div>
+</form>
+<script>
+    $(document).ready(function() {
+        // Toggle the text of the register-bank switch
+        $('#register-bank').change(function() {
+            if (this.checked) {
+                $('#register-bank-label').text('Yes');
+            } else {
+                $('#register-bank-label').text('No');
+            }
+        });
+
+        // Toggle the text of the account-holder switch
+        $('#account-holder').change(function() {
+            if (this.checked) {
+                $('#account-holder-label').text('Yes');
+            } else {
+                $('#account-holder-label').text('No');
+            }
+        });
+
+        $('#bankForm').submit(function(event) {
+            event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '/submit-bank',
+                data: $(this).serialize(),
+                success: function(response) {
+                    alert('Bank form submitted successfully!');
+                },
+                error: function(error) {
+                    alert('Error submitting bank form');
+                }
+            });
+        });
+
+        $('#cancel-bank-info').click(function() {
+            $('#dynamic-content').addClass('hidden');
+            $('#mainContainer').show();
+        });
+
+        $('#proceed-to-tax').click(function() {
+            $('#dynamic-content').load('/tax');
+        });
+    });
+</script>
