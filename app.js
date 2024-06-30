@@ -39,8 +39,12 @@ app.get('/child', (req, res) => {
     res.render('personalData/child', { layout: false });
 });
 
-app.get('/employment', (req, res) => {
-    res.render('personalData/employment', { layout: false });
+app.get('/incomeTaxCertificate', (req, res) => {
+    res.render('personalData/incomeTaxCertificate', { layout: false });
+});
+
+app.get('/capitalBuildingBenefits', (req, res) => {
+    res.render('personalData/capitalBuildingBenefits', { layout: false });
 });
 
 app.get('/result', (req, res) => {

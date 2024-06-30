@@ -1,9 +1,8 @@
 <!-- views/index.ejs -->
 <div class="form-title">
-    <h1>Form Page</h1>
-    <p>Fill out the details below to complete the form.</p>
+    <h1>Personal Data</h1>
 </div>
-<form id="mainForm">
+<form id="personalDataForm">
     <div class="form-section">
         <h2>Personal Information</h2>
         <div class="form-group row">
@@ -210,7 +209,7 @@
             }
         });
 
-        $('#mainForm').submit(function(event) {
+        $('#personalDataForm').submit(function(event) {
             event.preventDefault();
             $.ajax({
                 type: 'POST',

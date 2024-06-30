@@ -1,0 +1,73 @@
+<div class="form-title">
+    <h1>Capital Building Benefits</h1>
+</div>
+<form id="capitalBuildingBenefitsForm">
+    <div class="form-section">
+        <h2>Contract Information</h2>
+        
+        <div class="form-group">
+            <label for="description">Description (e.g., Investment Institution and Contract Number)</label>
+            <input type="text" id="description" name="description" class="form-control">
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-sm-6">
+                <label for="investmentType">
+                    Type of Investment *
+                    <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Select the type of investment contract"></i>
+                </label>
+                <select id="investmentType" name="investmentType" class="form-control" required>
+                    <option value="">Please select...</option>
+                    <option value="1">1 = Savings contract for securities or other asset participations</option>
+                    <option value="2">2 = Securities purchase agreement</option>
+                    <option value="3">3 = Participation agreement or participation purchase agreement</option>
+                    <option value="4">4 = Building savings contract</option>
+                    <option value="5">5 = Housing construction (e.g., debt reduction)</option>
+                </select>
+            </div>
+
+            <div class="form-group col-sm-6">
+                <label for="endOfLockPeriod">
+                    End of Lock-up Period *
+                    <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Enter the date when the lock-up period ends"></i>
+                </label>
+                <input type="date" id="endOfLockPeriod" name="endOfLockPeriod" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-sm-6">
+                <label for="capitalBuildingBenefits">
+                    Capital Building Benefits *
+                    <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Enter the amount of capital building benefits"></i>
+                </label>
+                <div class="input-group">
+                    <input type="text" id="capitalBuildingBenefits" name="capitalBuildingBenefits" class="form-control" value="0.00 €">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary">
+        <input type="button" value="Cancel" id="cancel-capital-building-benefits" class="btn btn-secondary">
+        <input type="reset" value="Clear" class="btn btn-warning">
+    </div>
+</form>
+
+<script>
+    $(document).ready(function() {
+        $('#capitalBuildingBenefitsForm').submit(function(event) {
+            event.preventDefault();
+            // Add your form submission logic here
+            alert('Form submitted!');
+        });
+
+        $('#cancel-capital-building-benefits').click(function() {
+            // Add your cancel logic here
+            alert('Form cancelled!');
+        });
+
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
